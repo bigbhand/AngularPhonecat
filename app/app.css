@@ -91,3 +91,45 @@ h1 {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+
+.likesTable{
+	border-collapse: collapse;
+}
+
+.likesTable tr th{
+	border-bottom: 2px solid silver;
+	width:110px;
+	text-align: left;
+	padding-top: 10px;
+	cursor:pointer;
+}
+
+.likesTable tr td{
+	border-bottom: 1px solid silver;
+	padding-top: 10px;
+}
+
+img:HOVER {
+	cursor: pointer;
+}
+
+.arrow-up{
+	height: 0;
+	width : 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-bottom: 6px solid black;
+	display:inline-block;
+	margin-left:5px;
+}
+
+.arrow-down{
+	height: 0;
+	width : 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-top: 6px solid black;
+	display:inline-block;
+	margin-left:5px;
+}

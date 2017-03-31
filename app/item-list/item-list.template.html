@@ -1,0 +1,53 @@
+<br>
+Search : <input type="text" size="45" ng-model="$ctrl.search" placeholder=" search for name or model"/> 
+<!--  ng-model="$ctrl.search.name" will search only for Item Name -->
+<!--  ng-model="$ctrl.search" will search for all columns -->
+<br>
+<br>
+<div>
+Sort By : <select ng-model="$ctrl.sortByModel" ng-change="$ctrl.updateSortModels()">
+				<option value="+name">Name (a->z)</option>
+				<option value="-name">Name (z->a)</option>
+				<option value="+price">Price (low -> high)</option>
+				<option value="-price">Price (high -> low)</option>
+				<option value="+views">Views</option>
+				<option value="+releaseDate">Release Date</option>
+		  </select>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Records Per Page:<input type="number" min="0" max="10" value="5" step="1" ng-model="$ctrl.rowLimit"/>
+</div>
+<br>
+<div>
+<table class="likesTable" >
+	<thead>
+		<tr>
+			<th style="width:140px;" ng-click="$ctrl.sortData('name')">Item<div ng-class="$ctrl.getClassName('name')"></div></th>
+			<th ng-click="$ctrl.sortData('model')">Model<div ng-class="$ctrl.getClassName('model')"></div></th>
+			<th ng-click="$ctrl.sortData('releaseDate')">Release Date<div ng-class="$ctrl.getClassName('releaseDate')"></div></th>
+			<th ng-click="$ctrl.sortData('views')">Views<div ng-class="$ctrl.getClassName('views')"></div></th>
+			<th ng-click="$ctrl.sortData('price')">Price<div ng-class="$ctrl.getClassName('price')"></div></th>
+			<th ng-click="$ctrl.sortData('likes')">Likes<div ng-class="$ctrl.getClassName('likes')"></div></th>
+			<th ng-click="$ctrl.sortData('dislikes')">Dislike<div ng-class="$ctrl.getClassName('dislikes')"></div></th>
+			<th ng-click="$ctrl.sortData('rating')">Rating<div ng-class="$ctrl.getClassName('rating')"></div></th>
+			<th>Vote</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in $ctrl.items | filter:$ctrl.search | orderBy:$ctrl.sortColumn:$ctrl.reverseSort | limitTo:$ctrl.rowLimit">
+			<td>{{item.name  | uppercase }}</td>
+			<td>{{item.model | lowercase}}</td>
+			<td>{{item.releaseDate | date:'dd-MM-yyyy'}}</td>
+			<td>{{item.views  | number}}</td>
+			<td>{{item.price  | currency:'Rs.'}}</td>
+			<td>{{item.likes}}</td>
+			<td>{{item.dislikes}}</td>
+			<td>{{item.rating | ratingFilter}}</td>
+			<td><input type="button" value="Like" ng-click="$ctrl.incrementLikes(item)"/>
+			    <input type="button" value="Dislike" ng-click="$ctrl.incrementDislikes(item)"/>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+{{$ctrl.searchText}}
+</div>

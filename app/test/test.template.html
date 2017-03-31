@@ -1,0 +1,24 @@
+<div>
+ <h2>Hello, {{$ctrl.greet}}</h2>
+ 
+ <h2>{{$ctrl.sims}}</h2>
+ 
+ <h2 ng-bind='$ctrl.sims'></h2>
+ 
+ <ul ng-repeat='phone in $ctrl.phones'>
+ 	<li ng-bind='phone'></li>
+ </ul>
+ 
+ <table>
+ 	<tr ng-repeat='phone in $ctrl.phones'>
+ 		<td>{{phone}}</td>
+ 	</tr>
+ </table>
+ 
+  <table>
+ 	<tr ng-repeat='phone in $ctrl.phones'>
+ 		<td>{{phone}}</td>
+ 	</tr>
+ </table>
+ 
+</div>
